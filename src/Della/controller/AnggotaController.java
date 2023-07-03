@@ -2,25 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Della.controller;
-import Della.model.*;
-import Della.dao.*;
-import java.util.*;
-import Della.view.*;
-import javax.swing.JOptionPane;
+package Della.Controller;
+
+import Della.view.FormAnggota;
+import Della.model.Anggota;
+import Della.dao.AnggotaDao;
+import Della.dao.AnggotaDaoImpl;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author ASUS
+ * author ASUS
  */
 public class AnggotaController {
-    FormAnggota view;
-    Anggota anggota;
-    AnggotaDao dao;
+    private Anggota anggota;
+    private FormAnggota view;
+    private AnggotaDao dao;
     
-    public AnggotaController (FormAnggota view){
+    public AnggotaController(FormAnggota view){
         this.view = view;
-        dao = new AnggotaDaoImpl();
+        dao = new AnggotaDaoImpl();       
     }
     
     public void clearForm(){
@@ -29,59 +32,54 @@ public class AnggotaController {
         view.getTxtAlamat().setText("");
         view.getCboJenisKelamin().removeAllItems();
         view.getCboJenisKelamin().addItem("L");
-        view.getCboJenisKelamin().addItem("P");
+        view.getCboJenisKelamin().addItem("P");   
     }
     
     public void tampil(){
-        DefaultTableModel tabelModel =(DefaultTableModel) view.getTabelAnggota().getModel();
+        DefaultTableModel tabelModel = (DefaultTableModel) view.getTabelAnggota().getModel();
         tabelModel.setRowCount(0);
         List<Anggota> list = dao.getAll();
         for (Anggota a : list){
             Object[] row = {
-                a.getKodeanggota(),
-                a.getNamaanggota(),
+                a.getKodeAnggota(),
+                a.getNamaAnggota(),
                 a.getAlamat(),
-                a.getJeniskelamin()
+                a.getJenisKelamin()
             };
-            tabelModel.addRow(row);
+            tabelModel.addRow(row); 
         }
     }
     
     public void insert(){
         anggota = new Anggota();
-        anggota.setKodeanggota(view.getTxtKodeAnggota().getText());
-        anggota.setNamaanggota(view.getTxtNamaAnggota().getText());
+        anggota.setKodeAnggota(view.getTxtKodeAnggota().getText());
+        anggota.setNamaAnggota(view.getTxtNamaAnggota().getText());
         anggota.setAlamat(view.getTxtAlamat().getText());
-        anggota.setJeniskelamin(view.getCboJenisKelamin().getSelectedItem().toString());
+        anggota.setJenisKelamin(view.getCboJenisKelamin().getSelectedItem().toString());
         dao.insert(anggota);
-        JOptionPane.showMessageDialog(view, "Entri Data Ok");
-        
+        JOptionPane.showMessageDialog(view,"Entri Data Ok");
     }
-    
-    public void update(){
-        int index = view.getTabelAnggota().getSelectedRow();
-        anggota.setKodeanggota(view.getTxtKodeAnggota().getText());
-        anggota.setNamaanggota(view.getTxtNamaAnggota().getText());
-        anggota.setAlamat(view.getTxtAlamat().getText());
-        anggota.setJeniskelamin(view.getCboJenisKelamin().getSelectedItem().toString());
-        dao.update(index, anggota);
-        JOptionPane.showMessageDialog(view, "Update Data Ok");   
-    }
-    
-    public void delete(){
-        int index = view.getTabelAnggota().getSelectedRow();
-        dao.delete(index);
-        JOptionPane.showConfirmDialog(view, "Delete Data Ok");
-    }
-    
     
     public void getAnggota(){
         int index = view.getTabelAnggota().getSelectedRow();
         anggota = dao.getAnggota(index);
-        view.getTxtKodeAnggota().setText(anggota.getKodeanggota());
-        view.getTxtNamaAnggota().setText(anggota.getNamaanggota());
+        view.getTxtKodeAnggota().setText(anggota.getKodeAnggota());
+        view.getTxtNamaAnggota().setText(anggota.getNamaAnggota());
         view.getTxtAlamat().setText(anggota.getAlamat());
-        view.getCboJenisKelamin().setSelectedItem(anggota.getJeniskelamin());
+        view.getCboJenisKelamin().setSelectedItem(anggota.getJenisKelamin());
     }
-
+     public void updateAnggota(){
+        int index = view.getTabelAnggota().getSelectedRow();
+        anggota.setKodeAnggota(view.getTxtKodeAnggota().getText());
+        anggota.setNamaAnggota(view.getTxtNamaAnggota().getText());
+        anggota.setAlamat(view.getTxtAlamat().getText());
+        anggota.setJenisKelamin(view.getCboJenisKelamin().getSelectedItem().toString());
+        dao.update(index, anggota);
+        JOptionPane.showMessageDialog(view,"Update Data Ok");
+    }
+      public void deleteAnggota(){
+        int index = view.getTabelAnggota().getSelectedRow();
+        dao.delete(index);
+         JOptionPane.showMessageDialog(view,"Delete OK");  
+    }
 }

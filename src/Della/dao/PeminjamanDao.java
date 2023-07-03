@@ -3,17 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Della.dao;
-import Della.model.Anggota;
+import Della.model.Peminjaman;
 import java.util.List;
 /**
  *
  * @author ASUS
  */
-public interface AnggotaDao {
-    void insert(Anggota anggota);
-    void update(int index, Anggota anggota);
+public interface PeminjamanDao {
+     void insert(Peminjaman peminjaman);
+    void update(int index, Peminjaman peminjaman);
     void delete(int index);
-    Anggota getAnggota(int index);
-    List<Anggota>getAll();
+    Peminjaman getPeminjaman(int index);
+    List<Peminjaman> getAll();
 }
-

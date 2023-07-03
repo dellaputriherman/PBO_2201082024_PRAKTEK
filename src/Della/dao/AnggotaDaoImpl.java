@@ -6,31 +6,36 @@ package Della.dao;
 import java.util.List;
 import java.util.ArrayList;
 import Della.model.Anggota;
+
 /**
  *
  * @author ASUS
  */
-public class AnggotaDaoImpl implements AnggotaDao{
-    private List<Anggota> data = new ArrayList<>();
+public class AnggotaDaoImpl implements AnggotaDao {
+    private List<Anggota> data = new ArrayList();
     
-    public AnggotaDaoImpl(){
-        data.add(new Anggota("A001", "Della", "Padang", "P"));
-        data.add(new Anggota("A002", "Dhea", "Padang", "P"));
+       public AnggotaDaoImpl(){
+        data.add(new Anggota ("A001","Della","Pariaman","P"));
+        data.add(new Anggota ("B002","Putri","Padang","P"));
+        
     }
-    public void insert (Anggota anggota){
+    
+    public void insert(Anggota anggota){
         data.add(anggota);
     }
-    public void update (int index, Anggota anggota){
+    public void update(int index, Anggota anggota){
         data.set(index, anggota);
     }
-    public void delete (int index){
+    
+    public void delete(int index){
         data.remove(index);
     }
+    
     public Anggota getAnggota(int index){
         return data.get(index);
     }
-    public List<Anggota> getAll(){
+    
+    public List<Anggota>getAll(){
         return data;
     }
 }
-

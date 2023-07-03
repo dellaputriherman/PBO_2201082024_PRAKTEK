@@ -9,26 +9,35 @@ package Della.model;
  * @author ASUS
  */
 public class Buku {
-    private String kodebuku;
-    private String judulbuku;
+    private String kodeBuku;
+    private String judul;
     private String pengarang;
     private String penerbit;
-    private String tahunterbit;
 
-    public String getKodebuku() {
-        return kodebuku;
+    public Buku() {
     }
 
-    public void setKodebuku(String kodebuku) {
-        this.kodebuku = kodebuku;
+    public Buku(String kodeBuku, String judul, String pengarang, String penerbit) {
+        this.kodeBuku = kodeBuku;
+        this.judul = judul;
+        this.pengarang = pengarang;
+        this.penerbit = penerbit;
     }
 
-    public String getJudulbuku() {
-        return judulbuku;
+    public String getKodeBuku() {
+        return kodeBuku;
     }
 
-    public void setJudulbuku(String judulbuku) {
-        this.judulbuku = judulbuku;
+    public void setKodeBuku(String kodeBuku) {
+        this.kodeBuku = kodeBuku;
+    }
+
+    public String getJudul() {
+        return judul;
+    }
+
+    public void setJudul(String judul) {
+        this.judul = judul;
     }
 
     public String getPengarang() {
@@ -46,13 +55,4 @@ public class Buku {
     public void setPenerbit(String penerbit) {
         this.penerbit = penerbit;
     }
-
-    public String getTahunterbit() {
-        return tahunterbit;
-    }
-
-    public void setTahunterbit(String tahunterbit) {
-        this.tahunterbit = tahunterbit;
-    }
-    
 }

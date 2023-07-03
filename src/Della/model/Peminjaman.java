@@ -9,40 +9,51 @@ package Della.model;
  * @author ASUS
  */
 public class Peminjaman {
-    private String kodeanggota;
-    private String kodebuku;
-    private String tglpinjam;
-    private String tglkembali;
-
-    public String getKodeanggota() {
-        return kodeanggota;
+    private String kodeAnggota;
+    private String kodeBuku;
+    private String tglPinjam;
+    private String tglKembali;
+    
+    public Peminjaman(){
+    }
+    
+    public Peminjaman(String kodeAnggota, String kodeBuku, String tglPinjam,String tglKembali) {
+        this.kodeAnggota = kodeAnggota;
+        this.kodeBuku = kodeBuku;
+        this.tglPinjam = tglPinjam;
+        this.tglKembali = tglKembali;
     }
 
-    public void setKodeanggota(String kodeanggota) {
-        this.kodeanggota = kodeanggota;
+    public String getKodeAnggota() {
+        return kodeAnggota;
+    }
+    
+        public void setKodeAnggota(String kodeAnggota) {
+            this.kodeAnggota = kodeAnggota;
+        }
+
+    public String getKodeBuku() {
+        return kodeBuku;
+    }
+    
+        public void setKodeBuku(String KodeBuku) {
+            this.kodeBuku = KodeBuku;
+        }
+
+    public String getTglPinjam() {
+        return tglPinjam;
+    }
+    
+        public void setTglPinjam(String tglPinjam) {
+            this.tglPinjam = tglPinjam;
+        }
+
+    public String getTglKembali() {
+        return tglKembali;
     }
 
-    public String getKodebuku() {
-        return kodebuku;
-    }
-
-    public void setKodebuku(String kodebuku) {
-        this.kodebuku = kodebuku;
-    }
-
-    public String getTglpinjam() {
-        return tglpinjam;
-    }
-
-    public void setTglpinjam(String tglpinjam) {
-        this.tglpinjam = tglpinjam;
-    }
-
-    public String getTglkembali() {
-        return tglkembali;
-    }
-
-    public void setTglkembali(String tglkembali) {
-        this.tglkembali = tglkembali;
-    }
+        public void setTglKembali(String tglKembali) {
+            this.tglKembali = tglKembali;
+        }
 }
+
