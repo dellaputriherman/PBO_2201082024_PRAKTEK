@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Della.model;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author ASUS
@@ -13,6 +15,7 @@ public class Peminjaman {
     private String kodeBuku;
     private String tglPinjam;
     private String tglKembali;
+   
     
     public Peminjaman(){
     }
@@ -54,6 +57,16 @@ public class Peminjaman {
 
         public void setTglKembali(String tglKembali) {
             this.tglKembali = tglKembali;
+        }
+        
+        public long getSelisih() throws ParseException{
+           SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+                    Date d1 = format.parse(tglPinjam);
+                    Date d2 = format.parse(tglKembali);
+                    long diff = d2.getTime() - d1.getTime();
+                    long diffDays = diff / (24 * 60 * 60 * 1000);
+                    
+            return diffDays;
         }
 }
 
